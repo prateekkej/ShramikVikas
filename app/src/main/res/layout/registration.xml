@@ -57,8 +57,6 @@
                     android:ems="10"
                     android:id="@+id/editText"
                     android:layout_marginLeft="5dp"
-                    android:textColor="@color/colorText"
-                    android:textSize="17sp"
                     android:contentDescription="First Name"
                     android:capitalize="characters"
                     android:layout_width="match_parent"

@@ -1,14 +1,13 @@
 package com.shramikvikas;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.*;
@@ -18,8 +17,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.common.api.Status;
 import com.squareup.picasso.Picasso;
 
 
@@ -33,6 +30,15 @@ public class MainActivity extends AppCompatActivity  implements GoogleApiClient.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ImageView logo = (ImageView)findViewById(R.id.logo);
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri link= Uri.parse("https://www.google.com/search?q=Labor+Network");
+                Intent web= new Intent(Intent.ACTION_VIEW,link);
+                startActivity(web);
+            }
+        });
         register = (Button) findViewById(R.id.register);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +70,7 @@ public class MainActivity extends AppCompatActivity  implements GoogleApiClient.
             if (result.isSuccess()) {
                 Toast.makeText(getApplicationContext(), "Login Successfull", Toast.LENGTH_LONG).show();
                 GoogleSignInAccount account = result.getSignInAccount();
-                ImageView uimg = (ImageView) findViewById(R.id.imageView2);
+                ImageView uimg = (ImageView) findViewById(R.id.logo);
                 Picasso.with(getApplicationContext()).load(account.getPhotoUrl()).into(uimg);
             } else {
                 Toast.makeText(getApplicationContext(), "Login Failed", Toast.LENGTH_LONG).show();
