@@ -1,5 +1,7 @@
 package com.shramikvikas;
 
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
