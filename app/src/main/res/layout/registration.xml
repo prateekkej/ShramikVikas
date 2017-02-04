@@ -19,23 +19,6 @@
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp" />
 
-    <TextView
-        android:text="Register"
-        android:layout_width="match_parent"
-        android:id="@+id/textView4"
-        android:textSize="30sp"
-        android:textAllCaps="true"
-        android:textAlignment="center"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:background="@android:color/holo_red_dark"
-        android:textColor="@android:color/white"
-        android:textStyle="normal|bold"
-        android:fontFamily="sans-serif"
-        android:layout_alignParentTop="true"
-        android:layout_height="50dp"
-        android:backgroundTintMode="src_over" />
-
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -210,7 +193,8 @@
             <RelativeLayout android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
 
                 <ImageView
                     android:layout_width="25dp"
@@ -226,6 +210,25 @@
 
         </TableLayout>
     </android.support.v7.widget.CardView>
+
+    <TextView
+        android:text="Register"
+        android:layout_width="match_parent"
+        android:id="@+id/textView4"
+        android:textSize="30sp"
+        android:textAllCaps="true"
+        android:textAlignment="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:background="@android:color/holo_red_dark"
+        android:textColor="@android:color/white"
+        android:textStyle="normal|bold"
+        android:fontFamily="sans-serif"
+        android:layout_height="wrap_content"
+        android:backgroundTintMode="src_over"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 
 </RelativeLayout>
