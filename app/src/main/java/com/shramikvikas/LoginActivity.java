@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.view.ActionMode;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -20,9 +19,7 @@ import com.facebook.Profile;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.auth.api.*;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -31,25 +28,22 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.squareup.picasso.Picasso;
-
-
-public class MainActivity extends AppCompatActivity  implements GoogleApiClient.OnConnectionFailedListener {
+public class LoginActivity extends AppCompatActivity  implements GoogleApiClient.OnConnectionFailedListener {
     private SignInButton signinbutton;
     private GoogleSignInOptions signInOptions;
     private GoogleApiClient apiClient;
     private Button register;
     private LoginButton loginButton;
     private CallbackManager callbackManager;
+    private ImageView logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
         setContentView(R.layout.activity_main);
-
-        ImageView logo = (ImageView) findViewById(R.id.logo);
+        logo = (ImageView) findViewById(R.id.logo);
         logo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,31 +56,29 @@ public class MainActivity extends AppCompatActivity  implements GoogleApiClient.
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent im = new Intent(MainActivity.this, Registration.class);
+                Intent im = new Intent(LoginActivity.this, Registration.class);
                 startActivity(im);
                 finish();
             }
         });
-        signInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
-        signinbutton = (SignInButton) findViewById(R.id.signInButton);
-        signinbutton.setSize(SignInButton.SIZE_WIDE);
-        signinbutton.setColorScheme(SignInButton.COLOR_AUTO);
-        apiClient = new GoogleApiClient.Builder(getApplicationContext()).enableAutoManage(this, this).addApi(Auth.GOOGLE_SIGN_IN_API, signInOptions).addApi(AppIndex.API).build();
-        signinbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                Log.d("Google Button pressed", "");
-                Intent signin = Auth.GoogleSignInApi.getSignInIntent(apiClient);
-                startActivityForResult(signin, 100);
-            }
-        });
+            signInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+            signinbutton = (SignInButton) findViewById(R.id.signInButton);
+            signinbutton.setSize(SignInButton.SIZE_WIDE);
+            signinbutton.setColorScheme(SignInButton.COLOR_AUTO);
+            apiClient = new GoogleApiClient.Builder(getApplicationContext()).enableAutoManage(this, this).addApi(Auth.GOOGLE_SIGN_IN_API, signInOptions).addApi(AppIndex.API).build();
+            signinbutton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
 
+                    Log.d("Google Button pressed", "");
+                    Intent signin = Auth.GoogleSignInApi.getSignInIntent(apiClient);
+                    startActivityForResult(signin, 100);
+                }
+            });
         callbackManager = CallbackManager.Factory.create();
         loginButton = (LoginButton) findViewById(R.id.login_button);
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-
-
             @Override
             public void onSuccess(LoginResult loginResult) {
 
@@ -94,12 +86,12 @@ public class MainActivity extends AppCompatActivity  implements GoogleApiClient.
                     Log.i(TAG, "Access Token:: " + loginResult.getAccessToken());
                     facebookSuccess();
                 }
-                //Toast.makeText(MainActivity.this, "Profile accessed", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(LoginActivity.this, "Profile accessed", Toast.LENGTH_SHORT).show();
                 else*/
                     if (loginResult != null) {
                     Profile profile = Profile.getCurrentProfile();
-                    Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                        Intent im= new Intent(MainActivity.this,Labor_list.class);
+                    Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                        Intent im= new Intent(LoginActivity.this,HomeScreen.class);
                         startActivity(im);
                     if (profile != null) {
                         displayMessage(profile);
@@ -109,14 +101,14 @@ public class MainActivity extends AppCompatActivity  implements GoogleApiClient.
 
             @Override
             public void onCancel() {
-                Toast.makeText(MainActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
                 Log.d("Facebook cancel","");
             }
 
             @Override
             public void onError(FacebookException error) {
                 Log.d("Facebook error","");
-                Toast.makeText(MainActivity.this, "Profile error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Profile error", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -136,7 +128,7 @@ public class MainActivity extends AppCompatActivity  implements GoogleApiClient.
 
             ImageView fimg = (ImageView) findViewById(R.id.logo);
             Uri profileURI = profile.getProfilePictureUri(150,150);
-            Picasso.with(MainActivity.this).load(profileURI).resize(150,150).into(fimg);
+            Picasso.with(LoginActivity.this).load(profileURI).resize(150,150).into(fimg);
 
         }
     }
@@ -160,22 +152,20 @@ public class MainActivity extends AppCompatActivity  implements GoogleApiClient.
                     GoogleSignInAccount account = result.getSignInAccount();
                     ImageView uimg = (ImageView) findViewById(R.id.logo);
                     Picasso.with(getApplicationContext()).load(account.getPhotoUrl()).into(uimg);
-                    Intent im= new Intent(MainActivity.this,Labor_list.class);
+                    Intent im = new Intent(LoginActivity.this, HomeScreen.class);
                     startActivity(im);
                 } else {
                     Toast.makeText(getApplicationContext(), "Login Failed", Toast.LENGTH_LONG).show();
                 }
             }
-        //}else
-        //{
             callbackManager.onActivityResult(requestCode, resultCode, data);
-        //}*/
+
 
     }
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
+Toast.makeText(getApplicationContext(),"Connection Error :"+ connectionResult.getErrorCode(),Toast.LENGTH_SHORT ).show();
     }
 }
 

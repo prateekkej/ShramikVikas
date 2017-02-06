@@ -10,7 +10,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.shramikvikas.MainActivity">
+    tools:context="com.shramikvikas.LoginActivity">
 
 
     <FrameLayout
@@ -27,18 +27,17 @@
     </FrameLayout>
 
     <com.google.android.gms.common.SignInButton
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
         android:id="@+id/signInButton"
         android:animationCache="true"
         android:animateLayoutChanges="true"
         android:background="@android:color/white"
         app:buttonSize="wide"
-        android:foregroundTintMode="screen"
         android:foregroundTint="@color/colorPrimary"
         android:layout_marginTop="21dp"
         android:layout_below="@+id/logo"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
     </com.google.android.gms.common.SignInButton>
 
@@ -58,12 +57,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            </LinearLayout>
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -114,14 +107,7 @@
                     android:textColorLink="@color/colorPrimaryDark" />
 
             </LinearLayout>
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:color/white"
-                android:clickable="false"
-                android:layout_alignTop="@+id/signInButton"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true">
+
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -148,7 +134,6 @@
                     />
 
             </LinearLayout>
-</FrameLayout>
 
 
         </LinearLayout>
@@ -195,11 +180,10 @@
         android:id="@+id/login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:layout_marginTop="12dp"
         android:layout_below="@+id/signInButton"
-        android:layout_alignRight="@+id/signInButton"
-        android:layout_alignEnd="@+id/signInButton" />
+        android:elevation="2dp"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>
