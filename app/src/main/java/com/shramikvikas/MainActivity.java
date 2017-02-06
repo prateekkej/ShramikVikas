@@ -99,6 +99,8 @@ public class MainActivity extends AppCompatActivity  implements GoogleApiClient.
                     if (loginResult != null) {
                     Profile profile = Profile.getCurrentProfile();
                     Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                        Intent im= new Intent(MainActivity.this,Labor_list.class);
+                        startActivity(im);
                     if (profile != null) {
                         displayMessage(profile);
                     }
@@ -158,6 +160,8 @@ public class MainActivity extends AppCompatActivity  implements GoogleApiClient.
                     GoogleSignInAccount account = result.getSignInAccount();
                     ImageView uimg = (ImageView) findViewById(R.id.logo);
                     Picasso.with(getApplicationContext()).load(account.getPhotoUrl()).into(uimg);
+                    Intent im= new Intent(MainActivity.this,Labor_list.class);
+                    startActivity(im);
                 } else {
                     Toast.makeText(getApplicationContext(), "Login Failed", Toast.LENGTH_LONG).show();
                 }

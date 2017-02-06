@@ -4,40 +4,41 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-
-
-
     <application
-        android:screenOrientation="portrait"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/MainScreen"></activity>
         <activity
+            android:name=".MainActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/MainScreen" />
+        <activity
             android:name=".Splash"
-            android:theme="@style/Splash"
-            >
+            android:screenOrientation="portrait"
+            android:theme="@style/Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:screenOrientation="portrait"
+        <activity
             android:name=".Registration"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-        <meta-data android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
-        <activity android:name="com.facebook.FacebookActivity"
-            android:configChanges=
-                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
+        <activity android:name=".Labor_list"></activity>
     </application>
 
 </manifest>
