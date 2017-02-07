@@ -37,13 +37,11 @@ private RecyclerView recyclerView;
         labor_list.add(ob5);
         Labor_obj ob6= new Labor_obj("Akhil", "+91971054107");ob6.setRating(4.5);ob6.addSkill("Hardworking");ob6.addSkill("Smart");ob6.addSkill("Nice");
         labor_list.add(ob6);
-        adapter = new Labor_Adapter(labor_list);
+        adapter = new Labor_Adapter(labor_list,recyclerView);
         llm= new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(llm);
         recyclerView.setAdapter(adapter);
         return v;
-
-
     }
     }
 
