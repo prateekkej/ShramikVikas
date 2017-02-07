@@ -26,6 +26,7 @@ private RecyclerView recyclerView;
         View v= LayoutInflater.from(getContext()).inflate(R.layout.labors_fragment,container,false);
         recyclerView= (RecyclerView)v.findViewById(R.id.recycle_view);
         labor_list = new ArrayList<Labor_obj>();
+        recyclerView.setBackgroundResource(R.drawable.tab);
         Labor_obj ob= new Labor_obj("Rajat","+919644330695");ob.addSkill("Hardworking");ob.addSkill("Smart");ob.addSkill("Nice");ob.setRating(3.5);        labor_list.add(ob);
         Labor_obj ob2= new Labor_obj("Prateek","+919650072504"); ob2.addSkill("Hardworking");ob2.addSkill("Smart");ob2.addSkill("Nice");ob2.setRating(5);
         labor_list.add(ob2);
