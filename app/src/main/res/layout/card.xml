@@ -8,10 +8,10 @@
         app:contentPadding="5dp"
         android:id="@+id/cardd"
         android:layout_margin="5dp"
-        android:animateLayoutChanges="true"
-        android:animationCache="false"
+        android:animateLayoutChanges="false"
         android:background="@drawable/tab"
-    android:elevation="4dp">
+    android:elevation="4dp"
+    app:layout_collapseParallaxMultiplier="0.0">
 
 
 
@@ -19,7 +19,8 @@
             android:layout_width="match_parent"
             android:visibility="visible"
             android:layout_height="115dp"
-            android:id="@+id/collapsed">
+            android:id="@+id/collapsed"
+            android:animateLayoutChanges="false">
 
             <ImageView
                 android:layout_height="100dp"
@@ -106,7 +107,9 @@
         android:gravity="left"
         android:id="@+id/expanded_details"
         android:layout_height="250dp"
-        android:visibility="gone">
+        android:visibility="gone"
+        android:animateLayoutChanges="false"
+        android:animationCache="false">
 
         <ImageView
             android:layout_height="100dp"

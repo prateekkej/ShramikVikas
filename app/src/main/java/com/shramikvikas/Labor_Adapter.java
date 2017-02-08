@@ -1,5 +1,7 @@
 package com.shramikvikas;
 
+import android.animation.LayoutTransition;
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -7,6 +9,7 @@ import android.support.transition.Transition;
 import android.support.transition.TransitionManager;
 import android.support.transition.TransitionValues;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +30,7 @@ import java.util.ArrayList;
 public class Labor_Adapter extends RecyclerView.Adapter<Labor_Adapter.view_holder> {
    private ArrayList<Labor_obj> data;
     private RecyclerView recycler;
-        private int expandedPosition,lastPosition = -1;
+        private int expandedPosition,lastPosition = -1,previousExpanded;
     public Labor_Adapter(ArrayList<Labor_obj> list,RecyclerView recyclerView) {
             super(); data=list;recycler=recyclerView; expandedPosition=-1;
             }
@@ -39,7 +42,6 @@ public class Labor_Adapter extends RecyclerView.Adapter<Labor_Adapter.view_holde
 private Intent message,share,call;
     @Override
     public void onBindViewHolder(final view_holder holder, final int position) {
-        setAnimation(holder.itemView, position);
         final boolean isExpanded=position==expandedPosition;
         if(isExpanded)
         { holder.collapsed.setVisibility(View.GONE);
@@ -83,8 +85,8 @@ private Intent message,share,call;
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                expandedPosition = isExpanded ? -1:position;
-                notifyDataSetChanged();
+                    expandedPosition = isExpanded ? -1 : position;
+                    notifyItemChanged(position);
             }
         });
     holder.name.setText(data.get(position).getName());
@@ -97,7 +99,7 @@ private Intent message,share,call;
                 view.getContext().startActivity(call);
             }
         });
-        setAnimation(holder.itemView, position);
+        setAnimation(holder.itemView,position);
     }
 
     @Override
@@ -119,7 +121,7 @@ private Intent message,share,call;
         private RatingBar ratingBar,rating_expanded;
         private ImageView phone;
         private ImageButton dial,message,share;
-        private RelativeLayout expandedcard,collapsed;
+       public RelativeLayout expandedcard,collapsed;
 
        public view_holder(View itemView) {
         super(itemView);

@@ -1,5 +1,6 @@
 package com.shramikvikas;
 
+import android.animation.ObjectAnimator;
 import android.graphics.Color;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -21,6 +22,7 @@ public class HomeScreen extends AppCompatActivity {
         tabLayout.getTabAt(1).setIcon(R.drawable.ic_search_black_48dp);
         tabLayout.getTabAt(2).setIcon(R.drawable.ic_recent_actors_black_48dp);
         tabLayout.setBackgroundResource(R.drawable.tab);
+
 
 
 
