@@ -46,7 +46,6 @@ private Intent message,share,call;
         if(isExpanded)
         { holder.collapsed.setVisibility(View.GONE);
             holder.expandedcard.setVisibility(View.VISIBLE);
-
        }
         else{
             holder.expandedcard.setVisibility(View.GONE);
@@ -85,6 +84,8 @@ private Intent message,share,call;
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                   if(expandedPosition!=-1&& expandedPosition!=position)
+                   {notifyItemChanged(expandedPosition);}
                     expandedPosition = isExpanded ? -1 : position;
                     notifyItemChanged(position);
             }
