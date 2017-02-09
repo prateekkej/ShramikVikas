@@ -28,29 +28,77 @@ import java.util.ArrayList;
  */
 
 public class Labor_Adapter extends RecyclerView.Adapter<Labor_Adapter.view_holder> {
-   private ArrayList<Labor_obj> data;
+   protected ArrayList<Labor_obj> data;
     private RecyclerView recycler;
-        private int expandedPosition,lastPosition = -1,previousExpanded;
+    public static ArrayList<Labor_obj> recents;
+    private Intent message,share,call;
+        private int expandedPosition,lastPosition = -1,previousExpanded=-1;
     public Labor_Adapter(ArrayList<Labor_obj> list,RecyclerView recyclerView) {
             super(); data=list;recycler=recyclerView; expandedPosition=-1;
+        recents= new ArrayList<>();
             }
     @Override
     public Labor_Adapter.view_holder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v=LayoutInflater.from(parent.getContext()).inflate(R.layout.card,parent,false);
         return new view_holder(v);
     }
-private Intent message,share,call;
+
     @Override
     public void onBindViewHolder(final view_holder holder, final int position) {
         final boolean isExpanded=position==expandedPosition;
-        if(isExpanded)
+         if(isExpanded)
         { holder.collapsed.setVisibility(View.GONE);
             holder.expandedcard.setVisibility(View.VISIBLE);
+            expandedDefination(holder, position);
        }
         else{
             holder.expandedcard.setVisibility(View.GONE);
             holder.collapsed.setVisibility(View.VISIBLE);
+            collapsedDefination(holder, position);
            }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                   if(expandedPosition!=-1&& expandedPosition!=position)
+                   {notifyItemChanged(expandedPosition);
+                 }
+                    expandedPosition = isExpanded ? -1 : position;
+                    notifyItemChanged(position);
+            }
+        });
+        setAnimation(holder.itemView,position);
+    }
+
+    @Override
+    public int getItemCount() {
+        return data.size();
+    }
+public void collapsedDefination(final Labor_Adapter.view_holder holder, final int position){
+    holder.name.setText(data.get(position).getName());
+    holder.skills.setText(data.get(position).getSkills());
+    holder.ratingBar.setRating(((float) data.get(position).getRating()));
+    holder.phone.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Recent_Fragment.recents_adapter.add(data.get(position));
+            call= new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + data.get(position).getPhone()));
+            view.getContext().startActivity(call);
+
+
+        }
+    });
+
+}
+    private void setAnimation(View view, int position){
+
+        if (position > lastPosition)
+        {
+            Animation animation = AnimationUtils.loadAnimation(view.getContext(), android.R.anim.fade_in);
+            view.startAnimation(animation);
+            lastPosition = position;
+        }}
+        void expandedDefination(Labor_Adapter.view_holder holder,final int position )
+    {
         holder.name_expanded.setText(data.get(position).getName());
         holder.rating_expanded.setRating(((float) data.get(position).getRating()));
         holder.phoneno.setText(data.get(position).getPhone());
@@ -81,44 +129,11 @@ private Intent message,share,call;
                 view.getContext().startActivity(share);
             }
         });
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                   if(expandedPosition!=-1&& expandedPosition!=position)
-                   {notifyItemChanged(expandedPosition);}
-                    expandedPosition = isExpanded ? -1 : position;
-                    notifyItemChanged(position);
-            }
-        });
-    holder.name.setText(data.get(position).getName());
-        holder.skills.setText(data.get(position).getSkills());
-                holder.ratingBar.setRating(((float) data.get(position).getRating()));
-        holder.phone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                call= new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + data.get(position).getPhone()));
-                view.getContext().startActivity(call);
-            }
-        });
-        setAnimation(holder.itemView,position);
+
     }
 
-    @Override
-    public int getItemCount() {
-        return data.size();
-    }
-
-    private void setAnimation(View view, int position){
-
-        if (position > lastPosition)
-        {
-            Animation animation = AnimationUtils.loadAnimation(view.getContext(), android.R.anim.fade_in);
-            view.startAnimation(animation);
-            lastPosition = position;
-        }
-    }
-    class view_holder extends RecyclerView.ViewHolder{
-    private TextView name,skills,name_expanded,phoneno;
+    class view_holder extends RecyclerView.ViewHolder {
+        private TextView name,skills,name_expanded,phoneno;
         private RatingBar ratingBar,rating_expanded;
         private ImageView phone;
         private ImageButton dial,message,share;
