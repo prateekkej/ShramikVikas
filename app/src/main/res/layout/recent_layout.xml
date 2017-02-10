@@ -7,10 +7,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recents_list"
-        android:visibility="visible"
+        android:visibility="gone"
         android:animateLayoutChanges="true"
-        android:padding="5dp"
-        android:choiceMode="multipleChoice" />
+        android:padding="10dp"
+        android:choiceMode="multipleChoice"
+        android:background="@android:color/white" />
 
     <TextView
         android:text="No Recently Contacted Labor."
@@ -20,5 +21,5 @@
         android:textSize="25sp"
         android:layout_centerHorizontal="true"
         android:layout_centerInParent="true"
-        android:visibility="gone" />
+        android:visibility="visible" />
 </RelativeLayout>

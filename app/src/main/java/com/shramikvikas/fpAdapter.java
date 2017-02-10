@@ -10,7 +10,7 @@ import android.support.v4.app.FragmentPagerAdapter;
  */
 
 public class fpAdapter extends FragmentPagerAdapter {
-    @Override
+public static  Fragment profile,recent,search;
     public long getItemId(int position) {
         return super.getItemId(position);
     }

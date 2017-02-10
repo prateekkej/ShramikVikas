@@ -11,13 +11,14 @@
         android:animateLayoutChanges="false"
         android:background="@drawable/tab"
     android:elevation="4dp"
-    app:layout_collapseParallaxMultiplier="0.0">
+    app:layout_collapseParallaxMultiplier="0.0"
+    app:cardBackgroundColor="@color/cardview_light_background">
 
 
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:visibility="visible"
+            android:visibility="gone"
             android:layout_height="115dp"
             android:id="@+id/collapsed"
             android:animateLayoutChanges="false">
@@ -107,7 +108,7 @@
         android:gravity="left"
         android:id="@+id/expanded_details"
         android:layout_height="250dp"
-        android:visibility="gone"
+        android:visibility="visible"
         android:animateLayoutChanges="false"
         android:animationCache="false">
 
@@ -274,6 +275,20 @@
             android:layout_alignStart="@+id/textView15"
             android:id="@+id/textView19"
             android:textSize="16sp" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/ic_menu_delete"
+            android:layout_above="@+id/contactbar_expanded"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/delete"
+            android:elevation="0dp"
+            android:background="@android:drawable/screen_background_light_transparent"
+            android:layout_alignLeft="@+id/share_expanded"
+            android:layout_alignStart="@+id/share_expanded"
+            android:visibility="gone" />
 
     </RelativeLayout>
 

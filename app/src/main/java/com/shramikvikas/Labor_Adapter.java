@@ -80,7 +80,7 @@ public void collapsedDefination(final Labor_Adapter.view_holder holder, final in
     holder.phone.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Recent_Fragment.recents_adapter.add(data.get(position));
+recents.add(data.get(position));
             call= new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + data.get(position).getPhone()));
             view.getContext().startActivity(call);
 
@@ -105,6 +105,8 @@ public void collapsedDefination(final Labor_Adapter.view_holder holder, final in
         holder.dial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                recents.add(data.get(position));
+
                 call= new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + data.get(position).getPhone()));
                 view.getContext().startActivity(call);
             }
@@ -112,10 +114,13 @@ public void collapsedDefination(final Labor_Adapter.view_holder holder, final in
         holder.message.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                recents.add(data.get(position));
+
                 message= new Intent(Intent.ACTION_SENDTO);
                 message.setData(Uri.parse("smsto:"+ data.get(position).getPhone()));
                 message.putExtra("sms_body","Hello!!I would like to hire you for a day .If interested give me a miss call");
                 view.getContext().startActivity(message);
+
             }
         });
         holder.share.setOnClickListener(new View.OnClickListener() {

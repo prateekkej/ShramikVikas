@@ -10,12 +10,20 @@ import android.os.Bundle;
 public class HomeScreen extends AppCompatActivity {
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        if(Recent_Fragment.recents_adapter!=null){
+        Recent_Fragment.recents_adapter.notifyDataSetChanged();}
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
-        ViewPager vp=(ViewPager)findViewById(R.id.pager);
+       final ViewPager vp=(ViewPager)findViewById(R.id.pager);
        fpAdapter adapter= new fpAdapter(getSupportFragmentManager(),HomeScreen.this);
         vp.setAdapter(adapter);
+        vp.setOffscreenPageLimit(3);
         TabLayout tabLayout= (TabLayout)findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(vp);
         tabLayout.getTabAt(0).setIcon(R.drawable.ic_account_circle_black_48dp);
