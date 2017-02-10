@@ -280,15 +280,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@android:drawable/ic_menu_delete"
-            android:layout_above="@+id/contactbar_expanded"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
             android:id="@+id/delete"
             android:elevation="0dp"
             android:background="@android:drawable/screen_background_light_transparent"
-            android:layout_alignLeft="@+id/share_expanded"
-            android:layout_alignStart="@+id/share_expanded"
-            android:visibility="gone" />
+            android:visibility="visible"
+            android:layout_alignTop="@+id/share_expanded"
+            android:layout_toLeftOf="@+id/share_expanded"
+            android:layout_toStartOf="@+id/share_expanded"
+            android:layout_marginRight="13dp"
+            android:layout_marginEnd="13dp" />
 
     </RelativeLayout>
 
