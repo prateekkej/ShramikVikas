@@ -270,13 +270,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/ic_phone_black_48dp"
-            android:layout_marginRight="5dp"
             android:id="@+id/dial"
             android:layout_centerVertical="true"
-            android:layout_alignParentEnd="false"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:tint="@color/colorPrimaryDark"
-            android:layout_marginLeft="5dp"
-            android:layout_alignParentRight="true" />
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp" />
 
         <com.shramikvikas.ourTextView
             android:text="Skills:"
@@ -297,7 +297,8 @@
             android:layout_alignBaseline="@+id/textView11"
             android:layout_alignBottom="@+id/textView11"
             android:layout_toRightOf="@+id/textView10"
-            android:layout_toEndOf="@+id/textView10" />
+            android:layout_toEndOf="@+id/textView10"
+            android:paddingRight="2dp" />
 
     </RelativeLayout>
 

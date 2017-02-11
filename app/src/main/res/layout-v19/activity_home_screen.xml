@@ -17,8 +17,8 @@
         app:tabIndicatorColor="@color/colorPrimary"
         android:backgroundTint="@color/colorPrimaryDark"
         android:animateLayoutChanges="true"
-        android:backgroundTintMode="screen"
-        app:tabIndicatorHeight="5dp">
+        app:tabIndicatorHeight="5dp"
+        android:background="@color/colorPrimaryDark">
 
     </android.support.design.widget.TabLayout>
 

@@ -3,6 +3,7 @@ package com.shramikvikas;
 import android.animation.ObjectAnimator;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.support.design.widget.TabItem;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +16,6 @@ public class HomeScreen extends AppCompatActivity {
         if(Recent_Fragment.recents_adapter!=null){
         Recent_Fragment.recents_adapter.notifyDataSetChanged();}
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,11 +26,9 @@ public class HomeScreen extends AppCompatActivity {
         vp.setOffscreenPageLimit(3);
         TabLayout tabLayout= (TabLayout)findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(vp);
-        tabLayout.getTabAt(0).setIcon(R.drawable.ic_account_circle_black_48dp);
-        tabLayout.getTabAt(1).setIcon(R.drawable.ic_search_black_48dp);
-        tabLayout.getTabAt(2).setIcon(R.drawable.ic_recent_actors_black_48dp);
-        tabLayout.setBackgroundResource(R.drawable.tab);
-
+        tabLayout.getTabAt(0).setIcon(R.drawable.ic_account_circle_white_24dp);
+        tabLayout.getTabAt(1).setIcon(R.drawable.ic_search_white_24dp);
+        tabLayout.getTabAt(2).setIcon(R.drawable.ic_recent_actors_white_24dp);
 
 
 
