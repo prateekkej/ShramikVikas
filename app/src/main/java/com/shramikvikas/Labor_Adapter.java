@@ -3,6 +3,7 @@ package com.shramikvikas;
 import android.animation.LayoutTransition;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.transition.Transition;
@@ -30,11 +31,14 @@ import java.util.ArrayList;
 public class Labor_Adapter extends RecyclerView.Adapter<Labor_Adapter.view_holder> {
    protected ArrayList<Labor_obj> data;
     private RecyclerView recycler;
+    private Typeface medium,light;
     public static ArrayList<Labor_obj> recents;
     private Intent message,share,call;
         private int expandedPosition,lastPosition = -1,previousExpanded=-1;
     public Labor_Adapter(ArrayList<Labor_obj> list,RecyclerView recyclerView) {
             super(); data=list;recycler=recyclerView; expandedPosition=-1;
+        medium= Typeface.createFromAsset(recyclerView.getContext().getAssets(),"fonts/Raleway-Medium.ttf");
+        light= Typeface.createFromAsset(recyclerView.getContext().getAssets(),"fonts/Raleway-Light.ttf");
         recents= new ArrayList<>();
             }
     @Override
@@ -152,9 +156,11 @@ recents.add(data.get(position));
            dial= (ImageButton)itemView.findViewById(R.id.dial_expanded);
            message=(ImageButton)itemView.findViewById(R.id.message_expanded);
            name_expanded=(TextView)itemView.findViewById(R.id.name_exp);
+           name_expanded.setTypeface(medium);
            rating_expanded=(RatingBar)itemView.findViewById(R.id.rating_expanded);
            phoneno=(TextView)itemView.findViewById(R.id.phone_expanded);
                 name= (TextView)itemView.findViewById(R.id.name_collapsed);
+           name.setTypeface(medium);
         ratingBar= (RatingBar)itemView.findViewById(R.id.rating_collapsed);
            phone=(ImageView)itemView.findViewById(R.id.dial);
            skills=(TextView)itemView.findViewById(R.id.skill);

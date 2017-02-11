@@ -1,6 +1,7 @@
 package com.shramikvikas;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -32,17 +33,23 @@ public class LoginActivity extends AppCompatActivity  implements GoogleApiClient
     private SignInButton signinbutton;
     private GoogleSignInOptions signInOptions;
     private GoogleApiClient apiClient;
-    private Button register;
+    private Button register,forgot,login;
     private LoginButton loginButton;
     private CallbackManager callbackManager;
     private ImageView logo;
-
+Typeface medium,light;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
         setContentView(R.layout.activity_main);
+        medium= Typeface.createFromAsset(getAssets(),"fonts/Raleway-Medium.ttf");
+        light= Typeface.createFromAsset(getAssets(),"fonts/Raleway-Light.ttf");
+        forgot=(Button)findViewById(R.id.forgot);
+        forgot.setTypeface(medium);
+        login=(Button)findViewById(R.id.signin);
+        login.setTypeface(medium);
         logo = (ImageView) findViewById(R.id.logo);
         logo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +60,7 @@ public class LoginActivity extends AppCompatActivity  implements GoogleApiClient
             }
         });
         register = (Button) findViewById(R.id.register);
+        register.setTypeface(light);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,6 +86,7 @@ public class LoginActivity extends AppCompatActivity  implements GoogleApiClient
             });
         callbackManager = CallbackManager.Factory.create();
         loginButton = (LoginButton) findViewById(R.id.login_button);
+        loginButton.setTypeface(light);
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {

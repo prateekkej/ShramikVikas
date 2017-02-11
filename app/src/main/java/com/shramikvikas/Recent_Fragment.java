@@ -4,6 +4,7 @@ import android.animation.LayoutTransition;
 import android.content.Context;
 import android.content.Intent;
 import android.database.DataSetObserver;
+import android.graphics.Typeface;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
@@ -38,12 +39,16 @@ public class Recent_Fragment extends Fragment {
     public static ListView listView;
     static TextView no_recents;
     private ImageButton del;
+    private Typeface medium,light;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.recent_layout, container, false);
+        medium= Typeface.createFromAsset(container.getContext().getAssets(),"fonts/Raleway-Medium.ttf");
+        light= Typeface.createFromAsset(container.getContext().getAssets(),"fonts/Raleway-Light.ttf");
         listView = (ListView) v.findViewById(R.id.recents_list);
         no_recents = (TextView) v.findViewById(R.id.textView9);
+        no_recents.setTypeface(medium);
         recents_adapter = new Recents_adapter(getContext(), Labor_Adapter.recents);
         recents_adapter.registerDataSetObserver(new DataSetObserver() {
             @Override
@@ -89,6 +94,7 @@ public class Recent_Fragment extends Fragment {
             dial_expanded = (ImageButton) convertView.findViewById(R.id.dial_expanded);
             message_expanded = (ImageButton) convertView.findViewById(R.id.message_expanded);
             name_expanded = (TextView) convertView.findViewById(R.id.name_exp);
+            name_expanded.setTypeface(medium);
             phoneno = (TextView) convertView.findViewById(R.id.phone_expanded);
             sharevia = (ImageButton) convertView.findViewById(R.id.share_expanded);
             rating_expanded.setRating((float) data.getRating());

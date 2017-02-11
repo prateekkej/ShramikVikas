@@ -2,13 +2,13 @@ package com.shramikvikas;
 
 import android.animation.ObjectAnimator;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 public class HomeScreen extends AppCompatActivity {
-
     @Override
     protected void onResume() {
         super.onResume();

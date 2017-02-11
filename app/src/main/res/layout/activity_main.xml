@@ -148,13 +148,12 @@
         style="@android:style/Widget.DeviceDefault.Button.Borderless"
         android:elevation="4dp"
         android:background="?android:attr/selectableItemBackground"
-        android:textColor="@android:color/black"
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@+id/signInButton"
         android:layout_toEndOf="@+id/signInButton"
         android:layout_marginBottom="18dp" />
 
-    <TextView
+    <com.shramikvikas.ourTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="NOT REGISTERED YET?"
