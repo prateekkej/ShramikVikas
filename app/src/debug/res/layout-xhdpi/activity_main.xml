@@ -13,9 +13,9 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="28dp"
-        android:elevation="10dp"
         android:layout_height="70dp"
-        android:layout_width="70dp" />
+        android:layout_width="70dp"
+        android:translationZ="2dp" />
 
     <LinearLayout
     android:orientation="vertical"
@@ -30,9 +30,7 @@
             app:srcCompat="@color/colorPrimaryDark"
             android:id="@+id/imageView3"
             android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:foreground="@drawable/b2"
-            android:foregroundTint="@color/colorAppName" />
+            android:layout_weight="4" />
 
         <RelativeLayout
             android:orientation="vertical"
@@ -64,7 +62,8 @@
                     android:layout_centerHorizontal="false"
                     android:layout_gravity="center_vertical|center_horizontal"
                     android:paddingBottom="12dp"
-                    android:paddingTop="12dp" />
+                    android:paddingTop="12dp"
+                    android:layout_weight="1" />
 
                 <com.google.android.gms.common.SignInButton
                     android:id="@+id/signInButton"
@@ -87,7 +86,7 @@
             <view
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                class="com.shramikvikas.ourTextView"
+                class="com.shramikvikas.CustomViews.ourTextView"
                 android:id="@+id/view"
                 android:textColor="@color/colorAppName"
                 android:textSize="50dp"
@@ -99,7 +98,7 @@
             <view
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                class="com.shramikvikas.ourTextView"
+                class="com.shramikvikas.CustomViews.ourTextView"
                 android:id="@+id/view2"
                 android:text="@string/tagline"
                 android:textColor="@color/colorAppName"
@@ -239,7 +238,7 @@
         android:layout_weight="4"
             android:background="@color/colorPrimaryDark">
 
-            <com.shramikvikas.ourTextView
+            <com.shramikvikas.CustomViews.ourTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="NOT REGISTERED YET?"

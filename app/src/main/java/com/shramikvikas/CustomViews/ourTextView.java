@@ -1,4 +1,4 @@
-package com.shramikvikas;
+package com.shramikvikas.CustomViews;
 
 import android.content.Context;
 import android.content.res.AssetManager;

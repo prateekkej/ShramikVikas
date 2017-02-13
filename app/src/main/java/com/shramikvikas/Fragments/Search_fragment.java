@@ -1,28 +1,46 @@
-package com.shramikvikas;
+package com.shramikvikas.Fragments;
 
-import android.animation.LayoutTransition;
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.shramikvikas.Data.DataBaseOpenHelper;
+import com.shramikvikas.Data.DatabaseSchema;
+import com.shramikvikas.Data.Labor_Adapter;
+import com.shramikvikas.Data.Labor_obj;
+import com.shramikvikas.R;
+
 import java.util.ArrayList;
 
-public class Search_fragment extends Fragment {
+public class Search_fragment extends Fragment  {
 private RecyclerView recyclerView;
     private ArrayList<Labor_obj> labor_list;
     private Labor_Adapter adapter;
     private RecyclerView.LayoutManager llm;
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        DataBaseOpenHelper dbopener=  new DataBaseOpenHelper(getContext());
+        SQLiteDatabase dbr,dbw;
+        dbw=dbopener.getWritableDatabase();
+        ContentValues obj = new ContentValues();
+        obj.put(DatabaseSchema.LaborSearchTable.COLUMN_LABOR_NAME,"Prateek");
+        obj.put(DatabaseSchema.LaborSearchTable.COLUMN_LABOR_GENDER, DatabaseSchema.LaborSearchTable.GENDER_MALE);
+        obj.put(DatabaseSchema.LaborSearchTable.COLUMN_LABOR_PHONE,"+919650072504");
+        obj.put(DatabaseSchema.LaborSearchTable.COLUMN_LABOR_PRICE,500);
+        obj.put(DatabaseSchema.LaborSearchTable.COLUMN_LABOR_RATING,"5");
+        obj.put(DatabaseSchema.LaborSearchTable.COLUMN_LABOR_TYPE,"Heavy Lift");
+        dbw.insert(DatabaseSchema.LaborSearchTable.TABLE_NAME,null,obj);
+        dbw.close();
 
         View v= LayoutInflater.from(getContext()).inflate(R.layout.labors_fragment,container,false);
         recyclerView= (RecyclerView)v.findViewById(R.id.recycle_view);
@@ -45,6 +63,7 @@ private RecyclerView recyclerView;
         llm= new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(llm);
         recyclerView.setAdapter(adapter);
+
         return v;
     }
     }

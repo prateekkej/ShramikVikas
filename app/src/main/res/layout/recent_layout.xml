@@ -13,7 +13,7 @@
         android:choiceMode="multipleChoice"
         android:background="@android:color/white" />
 
-    <com.shramikvikas.ourTextView
+    <com.shramikvikas.CustomViews.ourTextView
         android:text="No Recently Contacted Labor."
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

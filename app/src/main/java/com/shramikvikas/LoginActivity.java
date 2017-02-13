@@ -3,11 +3,16 @@ package com.shramikvikas;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.KeyCharacterMap;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -38,12 +43,37 @@ public class LoginActivity extends AppCompatActivity  implements GoogleApiClient
     private CallbackManager callbackManager;
     private ImageView logo;
 Typeface medium,light;
+
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY|View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+        final View decorView = getWindow().getDecorView();
+        decorView.setOnSystemUiVisibilityChangeListener
+                (new View.OnSystemUiVisibilityChangeListener() {
+                    @Override
+                    public void onSystemUiVisibilityChange(int visibility) {
+                        // Note that system bars will only be "visible" if none of the
+                        // LOW_PROFILE, HIDE_NAVIGATION, or FULLSCREEN flags are set.
+                        if ((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0) {
+                            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION|View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+                        } else {
+                            // TODO: The system bars are NOT visible. Make any desired
+                            // adjustments to your UI, such as hiding the action bar or
+                            // other navigational controls.
+                        }
+                    }
+                });
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
         setContentView(R.layout.activity_main);
+
         medium= Typeface.createFromAsset(getAssets(),"fonts/Raleway-Medium.ttf");
         light= Typeface.createFromAsset(getAssets(),"fonts/Raleway-Light.ttf");
         forgot=(Button)findViewById(R.id.forgot);
@@ -51,6 +81,7 @@ Typeface medium,light;
         login=(Button)findViewById(R.id.signin);
         login.setTypeface(medium);
         logo = (ImageView) findViewById(R.id.logo);
+        logo.bringToFront();
         logo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

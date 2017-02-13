@@ -153,7 +153,7 @@
         android:layout_toEndOf="@+id/signInButton"
         android:layout_marginBottom="18dp" />
 
-    <com.shramikvikas.ourTextView
+    <com.shramikvikas.CustomViews.ourTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="NOT REGISTERED YET?"

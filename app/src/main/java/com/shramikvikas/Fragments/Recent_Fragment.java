@@ -1,34 +1,28 @@
-package com.shramikvikas;
+package com.shramikvikas.Fragments;
 
 import android.animation.LayoutTransition;
 import android.content.Context;
 import android.content.Intent;
 import android.database.DataSetObserver;
 import android.graphics.Typeface;
-import android.media.Image;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.shramikvikas.Data.Labor_Adapter;
+import com.shramikvikas.Data.Labor_obj;
+import com.shramikvikas.R;
+
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Prateek on 07-02-2017.
@@ -91,29 +85,11 @@ public class Recent_Fragment extends Fragment {
             }
             final Labor_obj data = getItem(position);
             rating_expanded = (RatingBar) convertView.findViewById(R.id.rating_expanded);
-            dial_expanded = (ImageButton) convertView.findViewById(R.id.dial_expanded);
-            message_expanded = (ImageButton) convertView.findViewById(R.id.message_expanded);
             name_expanded = (TextView) convertView.findViewById(R.id.name_exp);
             name_expanded.setTypeface(medium);
             phoneno = (TextView) convertView.findViewById(R.id.phone_expanded);
             sharevia = (ImageButton) convertView.findViewById(R.id.share_expanded);
             rating_expanded.setRating((float) data.getRating());
-                dial_expanded.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    call = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + data.getPhone()));
-                    view.getContext().startActivity(call);
-                }
-            });
-            message_expanded.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    message = new Intent(Intent.ACTION_SENDTO);
-                    message.setData(Uri.parse("smsto:" + data.getPhone()));
-                    message.putExtra("sms_body", "Hello!!I would like to hire you for a day .If interested give me a miss call");
-                    view.getContext().startActivity(message);
-                }
-            });
             sharevia.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

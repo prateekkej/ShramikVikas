@@ -1,4 +1,4 @@
-package com.shramikvikas;
+package com.shramikvikas.Data;
 
 import java.util.ArrayList;
 
@@ -11,12 +11,13 @@ public class Labor_obj {
     private double rating;
     private ArrayList<String> skills;
     private String skill;
-    boolean flag;
-    protected Labor_obj(String a,String b)
+    boolean flag,isSelected;
+    public Labor_obj(String a,String b)
     {name=a;
         phone=b;
         rating=0;
         flag=true;
+        isSelected=false;
     skills=new ArrayList<>();}
     public void setName(String a){name=a;}
     public void setRating(double a){rating=a;}

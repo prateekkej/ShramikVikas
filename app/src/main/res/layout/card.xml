@@ -8,10 +8,11 @@
         app:contentPadding="5dp"
         android:id="@+id/cardd"
         android:layout_margin="5dp"
-        android:animateLayoutChanges="false"
         android:background="@drawable/tab"
     android:elevation="4dp"
     app:layout_collapseParallaxMultiplier="0.0"
+    android:animateLayoutChanges="false"
+    app:cardElevation="2dp"
     app:cardBackgroundColor="@color/cardview_light_background">
 
 
@@ -35,7 +36,7 @@
             android:layout_alignParentStart="true"
             android:layout_marginTop="5dp" />
 
-        <com.shramikvikas.ourTextView
+        <com.shramikvikas.CustomViews.ourTextView
             android:text="TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -47,7 +48,7 @@
             android:id="@+id/name_exp"
             android:textSize="22sp"/>
 
-        <com.shramikvikas.ourTextView
+        <com.shramikvikas.CustomViews.ourTextView
             android:text="Phone :"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -58,7 +59,7 @@
             android:layout_marginTop="12dp"
             android:textSize="18sp" />
 
-        <com.shramikvikas.ourTextView
+        <com.shramikvikas.CustomViews.ourTextView
             android:text="TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -70,7 +71,7 @@
             android:textIsSelectable="true"
             android:textSize="16sp" />
 
-        <com.shramikvikas.ourTextView
+        <com.shramikvikas.CustomViews.ourTextView
             android:text="Rating :"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -118,23 +119,6 @@
             android:id="@+id/contactbar_expanded"
             android:layout_height="30dp">
 
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_message_black_36dp"
-                android:id="@+id/message_expanded"
-                android:layout_weight="1"
-                android:background="@android:drawable/screen_background_light_transparent"
-                android:tint="@color/colorPrimaryDark" />
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_phone_black_36dp"
-                android:id="@+id/dial_expanded"
-                android:layout_weight="1"
-                android:background="@android:drawable/screen_background_light_transparent"
-                android:tint="@color/colorPrimaryDark" />
         </LinearLayout>
 
         <LinearLayout
@@ -146,7 +130,7 @@
             android:layout_toStartOf="@+id/name_exp"
             android:layout_below="@+id/image_expanded">
 
-            <com.shramikvikas.ourTextView
+            <com.shramikvikas.CustomViews.ourTextView
                 android:text="Category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -166,7 +150,7 @@
                 android:layout_gravity="center_horizontal"
                 android:tint="@color/colorAccent" />
 
-            <com.shramikvikas.ourTextView
+            <com.shramikvikas.CustomViews.ourTextView
                 android:text="Construction"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -176,7 +160,7 @@
                 android:textAllCaps="true"
                 android:textSize="12sp" />
 
-            <com.shramikvikas.ourTextView
+            <com.shramikvikas.CustomViews.ourTextView
                 android:text="Price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -184,7 +168,7 @@
                 android:textAlignment="center" />
         </LinearLayout>
 
-        <com.shramikvikas.ourTextView
+        <com.shramikvikas.CustomViews.ourTextView
             android:text="Reviews-"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -229,7 +213,7 @@
             android:layout_alignParentStart="true"
             android:layout_marginLeft="5dp" />
 
-        <com.shramikvikas.ourTextView
+        <com.shramikvikas.CustomViews.ourTextView
             android:text="TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -241,7 +225,7 @@
             android:layout_marginStart="20dp"
             android:textSize="18sp" />
 
-        <com.shramikvikas.ourTextView
+        <com.shramikvikas.CustomViews.ourTextView
             android:text="Rating:"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -266,19 +250,7 @@
             android:progressBackgroundTint="@color/colorPrimaryDark"
             android:progressTint="@color/colorPrimaryDark" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_phone_black_48dp"
-            android:layout_marginRight="5dp"
-            android:id="@+id/dial"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="false"
-            android:tint="@color/colorPrimaryDark"
-            android:layout_marginLeft="5dp"
-            android:layout_alignParentRight="true" />
-
-        <com.shramikvikas.ourTextView
+        <com.shramikvikas.CustomViews.ourTextView
             android:text="Skills:"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -287,7 +259,7 @@
             android:layout_alignLeft="@+id/name_collapsed"
             android:layout_alignStart="@+id/name_collapsed" />
 
-        <com.shramikvikas.ourTextView
+        <com.shramikvikas.CustomViews.ourTextView
             android:text="TextView"
             android:layout_height="wrap_content"
             android:id="@+id/skill"
