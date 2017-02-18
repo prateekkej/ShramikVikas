@@ -97,7 +97,6 @@ Typeface medium,light;
             public void onClick(View view) {
                 Intent im = new Intent(LoginActivity.this, Registration.class);
                 startActivity(im);
-                finish();
             }
         });
 

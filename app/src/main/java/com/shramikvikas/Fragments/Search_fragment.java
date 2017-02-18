@@ -21,6 +21,8 @@ import com.shramikvikas.R;
 
 import java.util.ArrayList;
 
+import okhttp3.OkHttpClient;
+
 public class Search_fragment extends Fragment  {
 private RecyclerView recyclerView;
     private ArrayList<Labor_obj> labor_list;
@@ -29,23 +31,11 @@ private RecyclerView recyclerView;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        DataBaseOpenHelper dbopener=  new DataBaseOpenHelper(getContext());
-        SQLiteDatabase dbr,dbw;
-        dbw=dbopener.getWritableDatabase();
-        ContentValues obj = new ContentValues();
-        obj.put(DatabaseSchema.LaborSearchTable.COLUMN_LABOR_NAME,"Prateek");
-        obj.put(DatabaseSchema.LaborSearchTable.COLUMN_LABOR_GENDER, DatabaseSchema.LaborSearchTable.GENDER_MALE);
-        obj.put(DatabaseSchema.LaborSearchTable.COLUMN_LABOR_PHONE,"+919650072504");
-        obj.put(DatabaseSchema.LaborSearchTable.COLUMN_LABOR_PRICE,500);
-        obj.put(DatabaseSchema.LaborSearchTable.COLUMN_LABOR_RATING,"5");
-        obj.put(DatabaseSchema.LaborSearchTable.COLUMN_LABOR_TYPE,"Heavy Lift");
-        dbw.insert(DatabaseSchema.LaborSearchTable.TABLE_NAME,null,obj);
-        dbw.close();
 
         View v= LayoutInflater.from(getContext()).inflate(R.layout.labors_fragment,container,false);
         recyclerView= (RecyclerView)v.findViewById(R.id.recycle_view);
         labor_list = new ArrayList<Labor_obj>();
-        recyclerView.setBackgroundResource(R.drawable.tab);
+              recyclerView.setBackgroundResource(R.drawable.tab);
         Labor_obj ob= new Labor_obj("Rajat","+919644330695");ob.addSkill("Hardworking");ob.addSkill("Smart");ob.addSkill("Nice");ob.setRating(3.5);        labor_list.add(ob);
         Labor_obj ob2= new Labor_obj("Prateek","+919650072504"); ob2.addSkill("Hardworking");ob2.addSkill("Smart");ob2.addSkill("Nice");ob2.setRating(5);
         labor_list.add(ob2);

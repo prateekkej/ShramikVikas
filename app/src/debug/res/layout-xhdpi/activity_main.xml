@@ -93,7 +93,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="22dp"
-                android:text="@string/app_name" />
+                android:text="@string/app_name_title" />
 
             <view
                 android:layout_width="wrap_content"
@@ -130,7 +130,8 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:background="@android:color/white"
-                    android:paddingTop="10dp">
+                    android:paddingTop="10dp"
+                    android:alpha="0.8">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -167,7 +168,8 @@
                     android:id="@+id/passll"
                     android:background="@android:color/white"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="20dp">
+                    android:paddingBottom="20dp"
+                    android:alpha="0.8">
 
                     <ImageView
                         android:layout_width="wrap_content"

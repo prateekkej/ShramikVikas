@@ -7,31 +7,51 @@
     android:background="@color/colorBackground"
 
     >
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/registration_barr" android:layout_width="match_parent"
+        android:layout_height="60dp">
 
-    <Button
-        android:text="Sign Up"
-        android:id="@+id/signup"
-        android:layout_height="50dp"
-        android:background="@color/common_google_signin_btn_text_dark_default"
-        android:elevation="2dp"
-        android:layout_width="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp" />
+        <view
+            android:layout_width="match_parent"
+            class="com.shramikvikas.CustomViews.ourTextView"
+            android:id="@+id/view3"
+            android:text="Register"
+            android:textColor="@android:color/white"
+            android:background="@color/colorPrimary"
+            android:textStyle="normal|bold"
+            android:textAlignment="gravity"
+            android:padding="5dp"
+            android:textSize="35dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal" />
+
+        <ImageButton
+            android:layout_height="match_parent"
+            app:srcCompat="?attr/homeAsUpIndicator"
+            android:id="@+id/Home"
+            android:background="?attr/selectableItemBackground"
+            android:layout_width="50dp"
+            android:layout_alignBottom="@+id/view3"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:tint="@android:color/white" />
+
+    </RelativeLayout>
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
         app:contentPadding="10dp"
-        android:layout_marginTop="70dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_marginTop="75dp"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentStart="false"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:id="@+id/cardregister">
+        android:id="@+id/cardregister"
+        android:layout_below="@+id/registration_barr">
 
         <TableLayout
             android:layout_width="match_parent"
@@ -212,23 +232,27 @@
         </TableLayout>
     </android.support.v7.widget.CardView>
 
-    <com.shramikvikas.CustomViews.ourTextView
-        android:text="Register"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:id="@+id/textView4"
-        android:textSize="30sp"
-        android:textAllCaps="true"
-        android:textAlignment="center"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:background="@color/colorPrimary"
-        android:textColor="@android:color/white"
-        android:fontFamily="sans-serif"
         android:layout_height="wrap_content"
-        android:backgroundTintMode="src_over"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:background="@android:color/white"
+        android:animateLayoutChanges="true"
+        android:layout_marginBottom="8dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/cardregister"
+        android:layout_alignEnd="@+id/cardregister"
+        android:layout_marginLeft="10dp">
+
+        <Button
+            android:text="Sign Up"
+            android:id="@+id/signup"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:elevation="2dp"
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="false"
+            android:layout_centerHorizontal="false" />
+    </FrameLayout>
 
 
 </RelativeLayout>

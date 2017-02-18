@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name"><u>Shram Vikas</u></string>
+    <string name="app_name">Shram Vikas</string>
     <string name="facebook_app_id">252500631839111</string>
     <string name="tagline">Bridging the gap</string>>
+    <string name="app_name_title"><u>Shram Vikas</u></string>
+
 </resources>

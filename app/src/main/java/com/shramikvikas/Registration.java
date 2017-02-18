@@ -1,11 +1,16 @@
 package com.shramikvikas;
 
+import android.content.Intent;
 import android.graphics.Typeface;
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,8 +23,13 @@ public class Registration extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registration);
-        TextView reigster= (TextView)findViewById(R.id.textView4);
-        reigster.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/Raleway-Medium.ttf"));
+        ImageButton back= (ImageButton)findViewById(R.id.Home);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavUtils.navigateUpFromSameTask(Registration.this);
+            }
+        });
         pass = (ImageView)findViewById(R.id.pass);
         pin= (TextView)findViewById(R.id.numericpin);
         signup=(Button)findViewById(R.id.signup);

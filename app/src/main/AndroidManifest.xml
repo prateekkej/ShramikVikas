@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.shramikvikas">
 
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -22,7 +23,9 @@
         <activity
             android:name=".Registration"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:parentActivityName=".LoginActivity"
+            />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
