@@ -97,7 +97,7 @@
                 android:id="@+id/fsg">
 
                 <Button
-                    android:text="Forgot Password"
+                    android:text="@string/forgot_password"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/forgot"
@@ -107,7 +107,7 @@
                     android:textColor="@android:color/white" />
 
                 <Button
-                    android:text="Log In"
+                    android:text="@string/log_in"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/signin"
@@ -240,7 +240,7 @@
             <com.shramikvikas.CustomViews.ourTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="NOT REGISTERED YET?"
+                android:text="@string/not_registered_yet"
                 android:layout_alignParentLeft="false"
                 android:layout_alignParentStart="false"
                 android:id="@+id/textView5"
@@ -253,7 +253,7 @@
                 android:layout_marginLeft="20dp" />
 
             <Button
-            android:text="Sign up "
+            android:text="@string/yes"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/register"

@@ -3,5 +3,19 @@
     <string name="facebook_app_id">252500631839111</string>
     <string name="tagline">Bridging the gap</string>>
     <string name="app_name_title"><u>Shram Vikas</u></string>
+    <string name="register_activity_heading">Register</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="address">Address</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="no_recently_contacted_labor">No Recently Contacted Labor.</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="log_in">Log In</string>
+    <string name="not_registered_yet">NOT REGISTERED YET?</string>
+    <string name="yes">Sign Up</string>>
+
 
 </resources>

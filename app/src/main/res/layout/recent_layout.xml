@@ -14,7 +14,7 @@
         android:background="@android:color/white" />
 
     <com.shramikvikas.CustomViews.ourTextView
-        android:text="No Recently Contacted Labor."
+        android:text="@string/no_recently_contacted_labor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView9"

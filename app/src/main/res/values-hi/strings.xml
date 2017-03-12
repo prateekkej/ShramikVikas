@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">श्रम विकास</string>
+    <string name="facebook_app_id">252500631839111</string>
+    <string name="tagline">Bridging the gap</string>>
+    <string name="app_name_title"><u>श्रम विकास</u></string>
+    <string name="register_activity_heading">रजिस्टर</string>>
+    <string name="first_name">नाम</string>
+    <string name="last_name">उपनाम</string>
+    <string name="phone_number">फ़ोन नंबर</string>
+    <string name="email_address">ईमेल</string>
+    <string name="password">पासवर्ड</string>
+    <string name="address">पता</string>
+    <string name="sign_up">जमा करें</string>
+    <string name="no_recently_contacted_labor">कुछ नहीं है</string>
+    <string name="forgot_password">पासवर्ड भूल गए</string>
+    <string name="log_in">लॉग इन करें</string>
+    <string name="not_registered_yet">पंजीकरण करे</string>
+    <string name="yes">हां</string>>
+</resources>
