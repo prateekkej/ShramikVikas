@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:contentPadding="5dp"
+        android:id="@+id/cardd"
+        android:layout_margin="5dp"
+        android:animateLayoutChanges="false"
+        android:background="@drawable/tab"
+    android:elevation="4dp"
+    app:layout_collapseParallaxMultiplier="0.0"
+    app:cardBackgroundColor="@color/cardview_light_background">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:gravity="left"
+        android:id="@+id/expanded_details"
+        android:layout_height="250dp"
+        android:visibility="gone"
+        android:animateLayoutChanges="false"
+        android:animationCache="false">
+
+        <ImageView
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/placeholder"
+            android:id="@+id/image_expanded"
+            android:layout_width="100dp"
+            android:layout_marginLeft="5dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="5dp" />
+
+        <com.shramikvikas.ourTextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/image_expanded"
+            android:layout_toEndOf="@+id/image_expanded"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/name_exp"
+            android:textSize="22sp"/>
+
+        <com.shramikvikas.ourTextView
+            android:text="Phone :"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView13"
+            android:layout_below="@+id/name_exp"
+            android:layout_alignLeft="@+id/name_exp"
+            android:layout_alignStart="@+id/name_exp"
+            android:layout_marginTop="12dp"
+            android:textSize="18sp" />
+
+        <com.shramikvikas.ourTextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView13"
+            android:layout_toRightOf="@+id/textView13"
+            android:layout_toEndOf="@+id/textView13"
+            android:id="@+id/phone_expanded"
+            android:layout_marginLeft="5dp"
+            android:textIsSelectable="true"
+            android:textSize="16sp" />
+
+        <com.shramikvikas.ourTextView
+            android:text="Rating :"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView13"
+            android:layout_alignLeft="@+id/textView13"
+            android:layout_alignStart="@+id/textView13"
+            android:id="@+id/textView15"
+            android:textSize="18sp"
+            android:layout_marginTop="5dp" />
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rating_expanded"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_alignBottom="@+id/textView15"
+            android:layout_alignLeft="@+id/phone_expanded"
+            android:layout_alignStart="@+id/phone_expanded"
+            android:animationResolution="@android:integer/config_shortAnimTime"
+            android:progressBackgroundTint="@color/colorPrimaryDark"
+            android:progressTint="@color/colorPrimaryDark"
+            android:rating="3" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/ic_menu_share"
+            android:id="@+id/share_expanded"
+            android:background="@android:drawable/screen_background_light_transparent"
+            android:layout_above="@+id/phone_expanded"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="10dp"
+            android:tint="@color/colorPrimaryDark"
+            android:tintMode="multiply" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/image_expanded"
+            android:layout_marginBottom="5dp"
+            android:divider="?attr/dividerVertical"
+            android:layout_toRightOf="@+id/image_expanded"
+            android:id="@+id/contactbar_expanded"
+            android:layout_height="30dp">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_message_black_36dp"
+                android:id="@+id/message_expanded"
+                android:layout_weight="1"
+                android:background="@android:drawable/screen_background_light_transparent"
+                android:tint="@color/colorPrimaryDark" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_phone_black_36dp"
+                android:id="@+id/dial_expanded"
+                android:layout_weight="1"
+                android:background="@android:drawable/screen_background_light_transparent"
+                android:tint="@color/colorPrimaryDark" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignLeft="@+id/image_expanded"
+            android:layout_toLeftOf="@+id/name_exp"
+            android:layout_toStartOf="@+id/name_exp"
+            android:layout_below="@+id/image_expanded">
+
+            <com.shramikvikas.ourTextView
+                android:text="Category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView16"
+                android:textAllCaps="true"
+                android:textAlignment="center"
+                android:textStyle="normal|bold"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp" />
+
+            <ImageView
+                app:srcCompat="@drawable/ic_gavel_black_48dp"
+                android:id="@+id/category_img"
+                android:layout_marginTop="10dp"
+                android:layout_height="50dp"
+                android:layout_width="50dp"
+                android:layout_gravity="center_horizontal"
+                android:tint="@color/colorAccent" />
+
+            <com.shramikvikas.ourTextView
+                android:text="Construction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/category_text"
+                android:layout_marginTop="10dp"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textSize="12sp" />
+
+            <com.shramikvikas.ourTextView
+                android:text="Price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/price_expanded"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+        <com.shramikvikas.ourTextView
+            android:text="Reviews-"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/image_expanded"
+            android:layout_alignLeft="@+id/textView15"
+            android:layout_alignStart="@+id/textView15"
+            android:id="@+id/textView19"
+            android:textSize="16sp" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/ic_menu_delete"
+            android:id="@+id/delete"
+            android:elevation="0dp"
+            android:background="@android:drawable/screen_background_light_transparent"
+            android:visibility="gone"
+            android:layout_alignTop="@+id/share_expanded"
+            android:layout_toLeftOf="@+id/share_expanded"
+            android:layout_toStartOf="@+id/share_expanded"
+            android:layout_marginRight="13dp"
+            android:layout_marginEnd="13dp"
+            android:tint="@color/colorPrimaryDark"
+            android:tintMode="multiply" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:visibility="visible"
+        android:layout_height="115dp"
+        android:id="@+id/collapsed"
+        android:animateLayoutChanges="false">
+
+        <ImageView
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/placeholder"
+            android:id="@+id/image_collapsed"
+            android:layout_width="100dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="5dp" />
+
+        <com.shramikvikas.ourTextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/name_collapsed"
+            android:layout_alignTop="@+id/image_collapsed"
+            android:layout_toRightOf="@+id/image_collapsed"
+            android:layout_toEndOf="@+id/image_collapsed"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:textSize="18sp" />
+
+        <com.shramikvikas.ourTextView
+            android:text="Rating:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView10"
+            android:layout_alignBottom="@+id/image_collapsed"
+            android:layout_alignLeft="@+id/name_collapsed"
+            android:layout_alignStart="@+id/name_collapsed" />
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rating_collapsed"
+            android:numStars="5"
+            android:isIndicator="true"
+            android:rating="4.5"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_alignBottom="@+id/textView10"
+            android:layout_toRightOf="@+id/textView10"
+            android:layout_toEndOf="@+id/textView10"
+            android:progressBackgroundTint="@color/colorPrimaryDark"
+            android:progressTint="@color/colorPrimaryDark" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_phone_black_48dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginEnd="14dp"
+            android:id="@+id/dial"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:tint="@color/colorPrimaryDark" />
+
+        <com.shramikvikas.ourTextView
+            android:text="Skills:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView11"
+            android:layout_centerVertical="true"
+            android:layout_alignLeft="@+id/name_collapsed"
+            android:layout_alignStart="@+id/name_collapsed" />
+
+        <com.shramikvikas.ourTextView
+            android:text="TextView"
+            android:layout_height="wrap_content"
+            android:id="@+id/skill"
+            android:layout_width="wrap_content"
+            android:textSize="12sp"
+            android:lines="2"
+            android:layout_alignBaseline="@+id/textView11"
+            android:layout_alignBottom="@+id/textView11"
+            android:layout_toRightOf="@+id/textView10"
+            android:layout_toEndOf="@+id/textView10" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

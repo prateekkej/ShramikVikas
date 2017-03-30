@@ -39,7 +39,6 @@ public class Registration extends AppCompatActivity{
     private Button signup;
     private boolean pass_status=true;
     private FirebaseAuth firebaseAuth;
-
     private DatabaseReference databaseReference;
 
 
@@ -89,7 +88,6 @@ public class Registration extends AppCompatActivity{
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 progressDialog.dismiss();
-
                                 if (task.isSuccessful()) {
                                     Toast.makeText(Registration.this, "Registration successful", Toast.LENGTH_LONG).show();
                                     Intent i = new Intent(Registration.this, LoginActivity.class);
@@ -121,14 +119,13 @@ public class Registration extends AppCompatActivity{
     }
     //method to save details on firebase
     private void saveUserInformation(){
-        String firstname = fname.getText().toString();
-        String lastname = lname.getText().toString();
+        String firstname = fname.getText().toString().trim();
+        String lastname = lname.getText().toString().trim();
         String haddress = address.getText().toString();
         String phnumber = phone.getText().toString();
 
         UserInformation userInformation = new UserInformation(firstname, lastname, haddress, phnumber);
         FirebaseUser user = firebaseAuth.getCurrentUser();
-
         databaseReference.child(user.getUid()).setValue(userInformation);
 
     }

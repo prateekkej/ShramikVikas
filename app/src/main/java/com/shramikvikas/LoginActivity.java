@@ -4,16 +4,11 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.KeyCharacterMap;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewConfiguration;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -35,7 +30,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.squareup.picasso.Picasso;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -204,14 +198,9 @@ Typeface medium,light;
         }
     }*/
 
-            private void displayMessage(Profile profile) {
-                if (profile != null) {
+            private void displayMessage(Profile profile){
 
-                    ImageView fimg = (ImageView) findViewById(R.id.logo);
-                    Uri profileURI = profile.getProfilePictureUri(150, 150);
-                    Picasso.with(LoginActivity.this).load(profileURI).resize(150, 150).into(fimg);
 
-                }
             }
 
             @Override
@@ -232,7 +221,6 @@ Typeface medium,light;
                         Toast.makeText(getApplicationContext(), "Login Successfull", Toast.LENGTH_LONG).show();
                         GoogleSignInAccount account = result.getSignInAccount();
                         ImageView uimg = (ImageView) findViewById(R.id.logo);
-                        Picasso.with(getApplicationContext()).load(account.getPhotoUrl()).into(uimg);
                         Intent im = new Intent(LoginActivity.this, HomeScreen.class);
                         startActivity(im);
                     } else {
