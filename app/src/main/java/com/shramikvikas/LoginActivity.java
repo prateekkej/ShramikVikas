@@ -102,7 +102,7 @@ Typeface medium,light;
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                //firebase connectivity for authentication of user
                 final ProgressDialog progressDialog = ProgressDialog.show(LoginActivity.this, "Please wait...", "Processing...", true);
                 (firebaseAuth.signInWithEmailAndPassword(email.getText().toString(), password.getText().toString()))
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
