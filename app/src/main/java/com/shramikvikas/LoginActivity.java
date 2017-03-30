@@ -1,5 +1,6 @@
 package com.shramikvikas;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -14,6 +15,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -34,7 +36,18 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.squareup.picasso.Picasso;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
+import static com.shramikvikas.R.id.editText8;
+
+
 public class LoginActivity extends AppCompatActivity  implements GoogleApiClient.OnConnectionFailedListener {
+    private EditText email;
+    private EditText password;
     private SignInButton signinbutton;
     private GoogleSignInOptions signInOptions;
     private GoogleApiClient apiClient;
@@ -42,6 +55,7 @@ public class LoginActivity extends AppCompatActivity  implements GoogleApiClient
     private LoginButton loginButton;
     private CallbackManager callbackManager;
     private ImageView logo;
+    private FirebaseAuth firebaseAuth;
 Typeface medium,light;
 
 
@@ -74,12 +88,41 @@ Typeface medium,light;
         AppEventsLogger.activateApp(this);
         setContentView(R.layout.activity_main);
 
-        medium= Typeface.createFromAsset(getAssets(),"fonts/Raleway-Medium.ttf");
-        light= Typeface.createFromAsset(getAssets(),"fonts/Raleway-Light.ttf");
-        forgot=(Button)findViewById(R.id.forgot);
+        email = (EditText) findViewById(R.id.editText7);
+        password = (EditText) findViewById(R.id.editText8);
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        medium = Typeface.createFromAsset(getAssets(), "fonts/Raleway-Medium.ttf");
+        light = Typeface.createFromAsset(getAssets(), "fonts/Raleway-Light.ttf");
+        forgot = (Button) findViewById(R.id.forgot);
         forgot.setTypeface(medium);
-        login=(Button)findViewById(R.id.signin);
+        login = (Button) findViewById(R.id.signin);
         login.setTypeface(medium);
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                final ProgressDialog progressDialog = ProgressDialog.show(LoginActivity.this, "Please wait...", "Processing...", true);
+                (firebaseAuth.signInWithEmailAndPassword(email.getText().toString(), password.getText().toString()))
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                progressDialog.dismiss();
+
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_LONG).show();
+                                    Intent i = new Intent(LoginActivity.this, HomeScreen.class);
+                                    startActivity(i);
+                                } else {
+                                    Log.e("ERROR", task.getException().toString());
+                                    Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        });
+            }
+        });
+
         logo = (ImageView) findViewById(R.id.logo);
         logo.bringToFront();
         logo.setOnClickListener(new View.OnClickListener() {
@@ -100,20 +143,20 @@ Typeface medium,light;
             }
         });
 
-            signInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
-            signinbutton = (SignInButton) findViewById(R.id.signInButton);
-            signinbutton.setSize(SignInButton.SIZE_WIDE);
-            signinbutton.setColorScheme(SignInButton.COLOR_AUTO);
-            apiClient = new GoogleApiClient.Builder(getApplicationContext()).enableAutoManage(this, this).addApi(Auth.GOOGLE_SIGN_IN_API, signInOptions).addApi(AppIndex.API).build();
-            signinbutton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+        signInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        signinbutton = (SignInButton) findViewById(R.id.signInButton);
+        signinbutton.setSize(SignInButton.SIZE_WIDE);
+        signinbutton.setColorScheme(SignInButton.COLOR_AUTO);
+        apiClient = new GoogleApiClient.Builder(getApplicationContext()).enableAutoManage(this, this).addApi(Auth.GOOGLE_SIGN_IN_API, signInOptions).addApi(AppIndex.API).build();
+        signinbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-                    Log.d("Google Button pressed", "");
-                    Intent signin = Auth.GoogleSignInApi.getSignInIntent(apiClient);
-                    startActivityForResult(signin, 100);
-                }
-            });
+                Log.d("Google Button pressed", "");
+                Intent signin = Auth.GoogleSignInApi.getSignInIntent(apiClient);
+                startActivityForResult(signin, 100);
+            }
+        });
         callbackManager = CallbackManager.Factory.create();
         loginButton = (LoginButton) findViewById(R.id.login_button);
         loginButton.setTypeface(light);
@@ -127,11 +170,11 @@ Typeface medium,light;
                 }
                 //Toast.makeText(LoginActivity.this, "Profile accessed", Toast.LENGTH_SHORT).show();
                 else*/
-                    if (loginResult != null) {
+                if (loginResult != null) {
                     Profile profile = Profile.getCurrentProfile();
                     Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                        Intent im= new Intent(LoginActivity.this,HomeScreen.class);
-                        startActivity(im);
+                    Intent im = new Intent(LoginActivity.this, HomeScreen.class);
+                    startActivity(im);
                     if (profile != null) {
                         displayMessage(profile);
                     }
@@ -141,12 +184,12 @@ Typeface medium,light;
             @Override
             public void onCancel() {
                 Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
-                Log.d("Facebook cancel","");
+                Log.d("Facebook cancel", "");
             }
 
             @Override
             public void onError(FacebookException error) {
-                Log.d("Facebook error","");
+                Log.d("Facebook error", "");
                 Toast.makeText(LoginActivity.this, "Profile error", Toast.LENGTH_SHORT).show();
             }
         });
@@ -161,51 +204,51 @@ Typeface medium,light;
         }
     }*/
 
-    private  void displayMessage(Profile profile){
-        if(profile != null)
-        {
+            private void displayMessage(Profile profile) {
+                if (profile != null) {
 
-            ImageView fimg = (ImageView) findViewById(R.id.logo);
-            Uri profileURI = profile.getProfilePictureUri(150,150);
-            Picasso.with(LoginActivity.this).load(profileURI).resize(150,150).into(fimg);
+                    ImageView fimg = (ImageView) findViewById(R.id.logo);
+                    Uri profileURI = profile.getProfilePictureUri(150, 150);
+                    Picasso.with(LoginActivity.this).load(profileURI).resize(150, 150).into(fimg);
 
-        }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        displayMessage(Profile.getCurrentProfile());
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        //if(count == 1) {
-            if (requestCode == 100) {
-                GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-                if (result.isSuccess()) {
-                    Toast.makeText(getApplicationContext(), "Login Successfull", Toast.LENGTH_LONG).show();
-                    GoogleSignInAccount account = result.getSignInAccount();
-                    ImageView uimg = (ImageView) findViewById(R.id.logo);
-                    Picasso.with(getApplicationContext()).load(account.getPhotoUrl()).into(uimg);
-                    Intent im = new Intent(LoginActivity.this, HomeScreen.class);
-                    startActivity(im);
-                } else {
-                    Toast.makeText(getApplicationContext(), "Login Failed", Toast.LENGTH_LONG).show();
                 }
             }
-            callbackManager.onActivityResult(requestCode, resultCode, data);
+
+            @Override
+            protected void onResume() {
+                super.onResume();
+
+                displayMessage(Profile.getCurrentProfile());
+            }
 
 
-    }
+            @Override
+            protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+                super.onActivityResult(requestCode, resultCode, data);
+                //if(count == 1) {
+                if (requestCode == 100) {
+                    GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+                    if (result.isSuccess()) {
+                        Toast.makeText(getApplicationContext(), "Login Successfull", Toast.LENGTH_LONG).show();
+                        GoogleSignInAccount account = result.getSignInAccount();
+                        ImageView uimg = (ImageView) findViewById(R.id.logo);
+                        Picasso.with(getApplicationContext()).load(account.getPhotoUrl()).into(uimg);
+                        Intent im = new Intent(LoginActivity.this, HomeScreen.class);
+                        startActivity(im);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Login Failed", Toast.LENGTH_LONG).show();
+                    }
+                }
+                callbackManager.onActivityResult(requestCode, resultCode, data);
 
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-Toast.makeText(getApplicationContext(),"Connection Error :"+ connectionResult.getErrorCode(),Toast.LENGTH_SHORT ).show();
-    }
-}
+
+            }
+
+            @Override
+            public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+                Toast.makeText(getApplicationContext(), "Connection Error :" + connectionResult.getErrorCode(), Toast.LENGTH_SHORT).show();
+            }
+        }
+
 
 

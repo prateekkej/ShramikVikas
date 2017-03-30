@@ -1,24 +1,27 @@
 {
   "project_info": {
-    "project_number": "956984025403",
-    "project_id": "shramik-vikas"
+    "project_number": "321691343189",
+    "firebase_url": "https://shramvikas-4a3d5.firebaseio.com",
+    "project_id": "shramvikas-4a3d5",
+    "storage_bucket": "shramvikas-4a3d5.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:956984025403:android:d42a09d23d452059",
+        "mobilesdk_app_id": "1:321691343189:android:d42a09d23d452059",
         "android_client_info": {
           "package_name": "com.shramikvikas"
         }
       },
       "oauth_client": [
         {
-          "client_id": "956984025403-bb9gjlnu3pmqgrugqfb5dic0loe0eqo1.apps.googleusercontent.com",
+          "client_id": "321691343189-js3icceote5mm356m8jtd1u0qouu52tq.apps.googleusercontent.com",
           "client_type": 3
-        }      ],
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyBljmk-DHBjsmxg-diHt4uYHmbGQ1YEgcs"
+          "current_key": "AIzaSyCBbaVlsD1KUy5KTFG0dbP2R9CclSIYiWA"
         }
       ],
       "services": {
@@ -30,7 +33,7 @@
           "other_platform_oauth_client": []
         },
         "ads_service": {
-          "status": 1
+          "status": 2
         }
       }
     }

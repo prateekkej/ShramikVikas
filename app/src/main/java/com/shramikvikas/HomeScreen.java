@@ -36,9 +36,9 @@ public class HomeScreen extends AppCompatActivity {
         vp.setOffscreenPageLimit(3);
         TabLayout tabLayout= (TabLayout)findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(vp);
-        tabLayout.getTabAt(0).setIcon(R.drawable.ic_account_circle_white_24dp);
-        tabLayout.getTabAt(1).setIcon(R.drawable.ic_search_white_24dp);
-        tabLayout.getTabAt(2).setIcon(R.drawable.ic_recent_actors_white_24dp);
+        tabLayout.getTabAt(0).setIcon(R.drawable.ic_account_circle_black_48dp);
+        tabLayout.getTabAt(1).setIcon(R.drawable.ic_search_black_48dp);
+        tabLayout.getTabAt(2).setIcon(R.drawable.ic_recent_actors_black_48dp);
     }
     protected void loadContent()
     {

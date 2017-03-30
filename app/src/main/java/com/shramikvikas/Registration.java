@@ -1,7 +1,9 @@
 package com.shramikvikas;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.support.annotation.NonNull;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -15,9 +17,17 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import okhttp3.FormBody;
 import okhttp3.RequestBody;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+
+
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Registration extends AppCompatActivity {
     private ImageView pass;
@@ -25,6 +35,7 @@ public class Registration extends AppCompatActivity {
     private EditText fname,lname,phone,email,address;
     private Button signup;
     private boolean pass_status=true;
+    private FirebaseAuth firebaseAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +54,7 @@ public class Registration extends AppCompatActivity {
         address=(EditText)findViewById(R.id.address);
         pass = (ImageView)findViewById(R.id.pass);
         pin= (TextView)findViewById(R.id.numericpin);
+        firebaseAuth = FirebaseAuth.getInstance();
 
 
         signup=(Button)findViewById(R.id.signup);
@@ -50,12 +62,30 @@ public class Registration extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                RequestBody requestBody= new FormBody.Builder().add("firstName",fname.getText().toString())
+                /*RequestBody requestBody= new FormBody.Builder().add("firstName",fname.getText().toString())
                         .add("lastName",lname.getText().toString())
                         .add("emailId",email.getText().toString())
                         .add("phoneNumber",phone.getText().toString())
                         .add("address",address.getText().toString())
                         .add("Password",pin.getText().toString()).build();
+            */
+                final ProgressDialog progressDialog = ProgressDialog.show(Registration.this, "Please wait...", "Processing...", true);
+                (firebaseAuth.createUserWithEmailAndPassword(email.getText().toString(), pin.getText().toString() ))
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                progressDialog.dismiss();
+
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(Registration.this, "Registration successful", Toast.LENGTH_LONG).show();
+                                    Intent i = new Intent(Registration.this, LoginActivity.class);
+                                    startActivity(i);
+                                }
+                                else
+                                {
+                                    Log.e("ERROR", task.getException().toString());
+                                    Toast.makeText(Registration.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                }
             }
         });
         pass.setOnClickListener(new View.OnClickListener() {
@@ -74,5 +104,7 @@ public class Registration extends AppCompatActivity {
             }
         });
 
+    }
+});
     }
 }
