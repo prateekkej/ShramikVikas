@@ -31,7 +31,7 @@
         android:id="@+id/imageView3"
         android:layout_height="match_parent"
         android:layout_weight="4"
-        android:foreground="@drawable/b2"
+
         android:foregroundTint="@color/colorAppName" />
 
         <RelativeLayout
@@ -103,7 +103,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/forgot"
                     android:elevation="2dp"
-                    android:background="?attr/selectableItemBackground"
+                    android:background="?android:attr/selectableItemBackground"
                     android:layout_weight="1"
                     android:textColor="@android:color/white" />
 
@@ -112,7 +112,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/signin"
-                    android:background="?attr/selectableItemBackground"
+                    android:background="?android:attr/selectableItemBackground"
                     android:layout_weight="1.05"
                     android:elevation="2dp"
                     android:textColor="@android:color/white" />
@@ -205,7 +205,7 @@
             <view
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                class="com.shramikvikas.ourTextView"
+                class="com.shramikvikas.CustomViews.ourTextView"
                 android:id="@+id/view"
                 android:textColor="@color/colorAppName"
                 android:textSize="50dp"
@@ -217,7 +217,7 @@
             <view
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                class="com.shramikvikas.ourTextView"
+                class="com.shramikvikas.CustomViews.ourTextView"
                 android:id="@+id/view2"
                 android:text="@string/tagline"
                 android:textColor="@color/colorAppName"

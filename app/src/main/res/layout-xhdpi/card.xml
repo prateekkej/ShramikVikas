@@ -70,22 +70,11 @@
             android:textIsSelectable="true"
             android:textSize="16sp" />
 
-        <com.shramikvikas.CustomViews.ourTextView
-            android:text="Rating :"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView13"
-            android:layout_alignLeft="@+id/textView13"
-            android:layout_alignStart="@+id/textView13"
-            android:id="@+id/textView15"
-            android:textSize="18sp"
-            android:layout_marginTop="5dp" />
-
         <RatingBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/rating_expanded"
             style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/textView15"
             android:layout_alignLeft="@+id/phone_expanded"
             android:layout_alignStart="@+id/phone_expanded"
@@ -149,6 +138,7 @@
                 android:layout_gravity="center_horizontal"
                 android:tint="@color/colorAccent" />
 
+
             <com.shramikvikas.CustomViews.ourTextView
                 android:text="Construction"
                 android:layout_width="match_parent"
@@ -165,6 +155,14 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/price_expanded"
                 android:textAlignment="center" />
+            <ImageButton
+                app:srcCompat="@drawable/ic_phone_black_48dp"
+                android:id="@+id/category_phone"
+                android:layout_marginTop="10dp"
+                android:layout_height="50dp"
+                android:layout_width="50dp"
+
+                android:tint="@color/colorAccent"/>
         </LinearLayout>
 
         <com.shramikvikas.CustomViews.ourTextView

@@ -32,6 +32,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+
 public class Registration extends AppCompatActivity{
     private ImageView pass;
     private TextView pin;
@@ -61,7 +63,7 @@ public class Registration extends AppCompatActivity{
         pass = (ImageView) findViewById(R.id.pass);
         pin = (TextView) findViewById(R.id.numericpin);
         firebaseAuth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference = FirebaseDatabase.getInstance().getReference("User");
 
         //private void  saveUserInformation();
 
@@ -123,10 +125,17 @@ public class Registration extends AppCompatActivity{
         String lastname = lname.getText().toString().trim();
         String haddress = address.getText().toString();
         String phnumber = phone.getText().toString();
-
+        String emailid = email.getText().toString();
+        String password = pin.getText().toString();
         UserInformation userInformation = new UserInformation(firstname, lastname, haddress, phnumber);
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        databaseReference.child(user.getUid()).setValue(userInformation);
+
+        HashMap<String, String> dataMap = new HashMap<String, String>();
+        dataMap.put("First Name", firstname);
+        dataMap.put("Last Name", lastname);
+        dataMap.put("Email", emailid);
+        dataMap.put("Address", haddress);
+        dataMap.put("Phone Number", phnumber);
+        databaseReference.push().setValue(dataMap);
 
     }
 
